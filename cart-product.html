@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<title>JF Shoping IT-Test</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/template.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<style>
+    .w3-sidebar a {
+        font-family: "Roboto", sans-serif
+    }
+    
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .w3-wide {
+        font-family: "Montserrat", sans-serif;
+    }
+    
+    body {
+        font-family: Arial;
+        margin: 0;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    img {
+        vertical-align: middle;
+    }
+    /* Position the image container (needed to position the left and right arrows) */
+    
+    .container {
+        position: relative;
+    }
+    /* Hide the images by default */
+    
+    .mySlides {
+        display: none;
+    }
+    /* Add a pointer when hovering over the thumbnail images */
+    
+    .cursor {
+        cursor: pointer;
+    }
+    /* Next & previous buttons */
+    
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    /* Position the "next button" to the right */
+    
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    /* On hover, add a black background color with a little bit see-through */
+    
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    /* Number text (1/3 etc) */
+    
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+    /* Container for image text */
+    
+    .caption-container {
+        text-align: center;
+        background-color: #222;
+        padding: 2px 16px;
+        color: white;
+    }
+    
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /* Six columns side by side */
+    
+    .column {
+        float: left;
+        width: 16.66%;
+    }
+    /* Add a transparency effect for thumnbail images */
+    
+    .demo {
+        opacity: 0.6;
+    }
+    
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
+</style>
+
+<head>
+    <link rel="stylesheet" href="css/font-awesome1.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/fontkit.js"></script>
+</head>
+
+<body class="w3-content" style="max-width:1700px">
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar"> <!-- เป็นแถบเมนูสไลด์บาร์ -->
+        <div class="w3-container w3-display-container w3-padding-16"> <!-- แบ่งเป็นช่องๆ container -->
+            <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i> <!-- ปุ่ม -->
+            <img src="w3images/logo.png" style="width:220px;height: 210px"> <!-- เป็นรูปโลโก้ -->
+        </div>
+
+
+        <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold"> <!-- พื้นหลังจะเป็นสีเทาๆ -->
+            <a onclick="myAccFunc1()" href="javascript:void(0)" class="w3-button w3-block w3-left-align">CPU <i class="fa fa-caret-down"></i> <!-- ปุ่มสไลด์ข้างๆจะเป็น block -->
+              </a>
+            <div id="demoAcc1" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+                <a href="cpu-intel.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Intel</a>
+                <a href="cpu-amd.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>AMD</a>
+            </div>
+
+
+            <a onclick="myAccFunc2()" href="javascript:void(0)" class="w3-button w3-block w3-left-align">Graphic-Card <i class="fa fa-caret-down"></i>
+              </a>
+            <div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+                <a href="vga-card-amd.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>AMD</a>
+                <a href="vga-card-nvidia.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>NVIDIA</a>
+            </div>
+
+
+            <a onclick="myAccFunc3()" href="javascript:void(0)" class="w3-button w3-block w3-left-align">Main Board <i class="fa fa-caret-down"></i>
+              </a>
+            <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+                <a href="mainboard-atx.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>ATX</a>
+                <a href="mainboard-micro-atx.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Micro-ATX</a>
+            </div>
+
+
+            <a onclick="myAccFunc4()" href="ram.html" class="w3-button w3-block w3-left-align"><i class="fa fa-caret-right w3-margin-right"></i>Ram (DDR4) 
+            </a>
+
+
+            <a onclick="myAccFunc5()" href="psu.html" class="w3-button w3-block w3-left-align"><i class="fa fa-caret-right w3-margin-right"></i>Power Supply 
+          </a>
+
+
+            <a onclick="myAccFunc6()" href="javascript:void(0)" class="w3-button w3-block w3-left-align">Case <i class="fa fa-caret-down"></i>
+        </a>
+            <div id="demoAcc6" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+                <a href="case-mid-tower.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Mid Tower</a>
+                <a href="case-mini-tower.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Mini Tower</a>
+            </div>
+
+
+        </div>
+        <a href="contact.html" class="w3-bar-item w3-button w3-padding">Contact</a> <!-- เป็นปุ่ม contact -->
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> <!-- ปุ่มรับข่าวสารหรือการส่งข่าวสาร -->
+        <a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a> <!-- ช่องทางการติดตาม ติดต่อ -->
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+        <div class="w3-bar-item w3-padding-24 w3-wide"><a href="index1.html">JF Shoping IT-Test</a></div>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:250px">
+
+        <!-- Push down content on small screens -->
+        <div class="w3-hide-large" style="margin-top:83px"></div>
+
+        <!-- Top header -->
+        <header class="w3-container w3-xlarge">
+            <br>
+            <p class="w3-left"><a href="index1.html"><i class="fa fa-home"> Home</i></a></p> <!-- ปุ่มไปหน้า home -->
+            <p class="w3-right"><a href="cart-product.html.html"><i class="fa fa-shopping-cart w3-right"></i></a></p> <!-- ปุ่มที่ไปตะกร้าสินค้า -->
+        </header>
+
+    </div>
+
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 65%;
+        }
+        
+        th,
+        td {
+            padding: 20px;
+        }
+    </style>
+
+    <br>
+    <br>
+
+    <!-- table discription to product -->
+    <div class="w3-container w3-gray" style="margin-left: 250px;"> <!-- ทำให้พื้นหลังสีออกเทาๆ -->
+        <h2>Cart Product</h2>
+
+        <table class="w3-left ">
+            <tr>
+                <th>Order</th>
+                <th>Detail</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>
+                    <img src="CPU/AMD/AMD_Ryzen_5_3600.png" class="w-left" style="width:45%"> <!-- รูปภาพจะอยู่ทางซ้าย มีขนาด 45% -->
+                </td>
+                <td style="text-align:left">AMD Ryzen 5 3600</td>
+                <td>6,490.00฿
+                    <select id="cars" name="cars">
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    </select>
+                </td>
+                <td>6,490.00฿</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="Mainboard/Micro-ATX/ASROCK B450M Steel Legend.png" class="w-left" style="width:45%">
+                </td>
+                <td style="text-align:left">ASROCK B450M Steel Legend</td>
+                <td>2,460.00฿
+                    <select id="cars" name="cars">
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    </select>
+                </td>
+                <td>2,460.00฿</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="Graphic-card/NVIDIA/ASUS ROG STRIX RTX 2070 SUPER GAMING ADVANCED.png" class="w-left" style="width:45%">
+                </td>
+                <td style="text-align:left">ASUS ROG STRIX RTX 2070 SUPER GAMING ADVANCED</td>
+                <td>18,090.00฿
+                    <select id="cars" name="cars">
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    </select>
+                </td>
+                <td>18,090.00฿</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="RAM/TEAMGROUP T-Force Dark Z DDR4 32GB (16GBx2) 3200 Gray.png" class="w-left" style="width:45%">
+                </td>
+                <td style="text-align:left">TEAMGROUP T-Force Dark Z DDR4 32GB (16GBx2) 3200 Gray</td>
+                <td>5,490.00฿
+                    <select id="cars" name="cars">
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    </select>
+                </td>
+                <td>5,490.00฿</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="psu/ASUS ROG Thor 850W.png" class="w-left" style="width:45%">
+                </td>
+                <td style="text-align:left">ASUS ROG Thor 850W</td>
+                <td>7,490.00฿
+                    <select id="cars" name="cars">
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    </select>
+                </td>
+                <td>7,490.00฿</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="case/Mid-Tower/TSUNAMI Galaxy G7 TG Black.png" class="w-left" style="width:45%">
+                </td>
+                <td style="text-align:left">TSUNAMI Galaxy G7 TG Black</td>
+                <td>995.00฿
+                    <select id="cars" name="cars">
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    </select>
+                </td>
+                <td>995.00฿</td>
+            </tr>
+            <br>
+            <br>
+
+        </table>
+        <br>
+        <br>
+        <table class="w3-right w3-black" style="width: 30%;">
+            <tr>
+                <th>
+                    <label for="adr">ADD A DISCOUNT CODE </label>
+                    <input type="text" id="adr" name="address">
+                    <button class="w3-right w3-button w3-white w3-border w3-border-black " style="padding: 2px 5px;">ADD</button>
+
+                    <p class="w3-left">Order value</p>
+                    <p class="w3-right">41,015.00฿</p><br><br><br>
+                    <p class="w3-text-grey">Shipping &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FREE</p>
+                    <p class="w3-left">Total</p>
+                    <p class="w3-right">41,015.00฿</p><br><br>
+
+
+                    <button class="w3-button w3-white w3-border w3-border-black w3-black  w3-hover-grey " style="padding: 3px 30px;">CONTINUE TO CHECKOUT</button>
+    </div>
+    <p class="w3-tiny">Prices and delivery costs are not confirmed until you've reached the checkout.</p>
+    </th>
+    </tr>
+    </table>
+    <br>
+    <br>
+    </div>
+
+
+    <br>
+    <br>
+
+    <br>
+    <br>
+
+    <!-- Footer -->
+    <footer class="w3-padding-64 w3-light-grey w3-small w3-center" style="margin-left: 250px;" id="footer"><!-- การติดต่อ -->
+        <div class="w3-row-padding">
+            <div class="w3-col s4">
+                <h4>Contact</h4>
+                <p>Questions? Go ahead.</p>
+                <form action="/action_page.php" target="_blank">
+                    <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required></p>
+                    <button type="submit" class="w3-button w3-block w3-black">Send</button>
+                </form>
+            </div>
+
+
+            <div class="w3-col s4 w3-justify w3-right">
+                <h4>Store</h4>
+                <p><i class="fa fa-fw fa-map-marker"></i> JF Shoping IT-Test </p>
+                <p><i class="fa fa-fw fa-phone"></i> 085-07XX84X </p>
+                <p><i class="fa fa-fw fa-envelope"></i> JF_Shoping_IT-Test@email.com</p>
+
+                <br>
+
+                <i class="fab fa-facebook-square fa-2x"></i>
+                <i class="fab fa-instagram fa-2x"></i>
+                <i class="fab fa-line fa-2x"></i>
+                <i class="fab fa-twitter fa-2x"></i>
+                <i class="fab fa-steam fa-2x"></i>
+            </div>
+        </div>
+    </footer>
+
+    <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+
+    <!-- End page content -->
+    </div>
+
+    <!-- Newsletter Modal -->
+    <div id="newsletter" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+            <div class="w3-container w3-white w3-center">
+                <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
+                <h2 class="w3-wide">NEWSLETTER</h2>
+                <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
+                <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+                <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Accordion 
+        function myAccFunc1() {
+            var x = document.getElementById("demoAcc1");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function myAccFunc2() {
+            var x = document.getElementById("demoAcc2");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function myAccFunc3() {
+            var x = document.getElementById("demoAcc3");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function myAccFunc4() {
+            var x = document.getElementById("demoAcc4");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function myAccFunc5() {
+            var x = document.getElementById("demoAcc5");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function myAccFunc6() {
+            var x = document.getElementById("demoAcc6");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        // Open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>

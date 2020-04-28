@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<title>JF Shoping IT-Test</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/template.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<style>
+    .w3-sidebar a {
+        font-family: "Roboto", sans-serif
+    }
+    
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .w3-wide {
+        font-family: "Montserrat", sans-serif;
+    }
+    
+    body {
+        font-family: Arial;
+        margin: 0;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    img {
+        vertical-align: middle;
+    }
+    /* Position the image container (needed to position the left and right arrows) */
+    
+    .container {
+        position: relative;
+    }
+    /* Hide the images by default */
+    
+    .mySlides {
+        display: none;
+    }
+    /* Add a pointer when hovering over the thumbnail images */
+    
+    .cursor {
+        cursor: pointer;
+    }
+    /* Next & previous buttons */
+    
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    /* Position the "next button" to the right */
+    
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    /* On hover, add a black background color with a little bit see-through */
+    
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    /* Number text (1/3 etc) */
+    
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+    /* Container for image text */
+    
+    .caption-container {
+        text-align: center;
+        background-color: #222;
+        padding: 2px 16px;
+        color: white;
+    }
+    
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /* Six columns side by side */
+    
+    .column {
+        float: left;
+        width: 16.66%;
+    }
+    /* Add a transparency effect for thumnbail images */
+    
+    .demo {
+        opacity: 0.6;
+    }
+    
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
+</style>
+
+<head>
+    <link rel="stylesheet" href="css/font-awesome1.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/fontkit.js"></script>
+</head>
+
+<body class="w3-content" style="max-width:1700px"> <!-- body ขนาด 1700 px -->
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar"> <!-- เป็นเมนู sidebar -->
+        <div class="w3-container w3-display-container w3-padding-16"> <!-- แบ่งเป็นช่องๆคอนเทนเนอร์ -->
+            <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i> <!-- เป็นลูกเล่นในตัวเว็บ -->
+            <img src="w3images/logo.png" style="width:220px;height: 210px"> <!-- ใส่รูปเป็น logo ร้าน -->
+        </div>
+
+
+        <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold"> <!-- ข้อความตัวใหญ่ font และ ตัวอักษรสีเทา -->
+            <a onclick="myAccFunc1()" href="javascript:void(0)" class="w3-button w3-block w3-left-align">CPU <i class="fa fa-caret-down"></i> <!-- ปุ่ม CPU มีให้กดลงเลือก -->
+              </a>
+            <div id="demoAcc1" class="w3-bar-block w3-hide w3-padding-large w3-medium"> <!-- กดเพื่อเลือกประเภทของสินค้าได้ -->
+                <a href="cpu-intel.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Intel</a> <!-- ปุ่มเชื่อมไปยังหน้า Intel -->
+                <a href="cpu-amd.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>AMD</a> <!-- ปุ่มเชื่อมไปยังหน้า AMD -->
+            </div>
+
+
+            <a onclick="myAccFunc2()" href="javascript:void(0)" class="w3-button w3-block w3-left-align">Graphic-Card <i class="fa fa-caret-down"></i> <!-- ปุ่ม GRP มีให้กดลงเลือก -->
+              </a>
+            <div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium"> <!-- กดเพื่อเลือกประเภทของสินค้าได้ -->
+                <a href="vga-card-amd.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>AMD</a> <!-- ปุ่มเชื่อมไปยังหน้า AMD -->
+                <a href="vga-card-nvidia.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>NVIDIA</a> <!-- ปุ่มเชื่อมไปยังหน้า NVI -->
+            </div>
+
+
+            <a onclick="myAccFunc3()" href="javascript:void(0)" class="w3-button w3-block w3-left-align">Main Board <i class="fa fa-caret-down"></i> <!-- ปุ่ม Main board มีให้กดลงเลือก -->
+              </a>
+            <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium"> <!-- กดเพื่อเลือกประเภทของสินค้าได้ -->
+                <a href="mainboard-atx.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>ATX</a> <!-- ปุ่มเชื่อมไปยังหน้า ATX -->
+                <a href="mainboard-micro-atx.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Micro-ATX</a> <!-- ปุ่มเชื่อมไปยังหน้า Micro ATX -->
+            </div>
+
+
+            <a onclick="myAccFunc4()" href="ram.html" class="w3-button w3-block w3-left-align"><i class="fa fa-caret-right w3-margin-right"></i>Ram (DDR4)  <!-- ปุ่ม RAM มีให้กดเลือก -->
+            </a>
+
+
+            <a onclick="myAccFunc5()" href="psu.html" class="w3-button w3-block w3-left-align"><i class="fa fa-caret-right w3-margin-right"></i>Power Supply <!-- ปุ่ม PSU มีให้กดเลือก -->
+          </a>
+
+
+            <a onclick="myAccFunc6()" href="javascript:void(0)" class="w3-button w3-block w3-left-align">Case <i class="fa fa-caret-down"></i> <!-- ปุ่ม Case มีให้กดลงเลือก -->
+        </a>
+            <div id="demoAcc6" class="w3-bar-block w3-hide w3-padding-large w3-medium"> <!-- กดเพื่อเลือกประเภทของสินค้าได้ -->
+                <a href="case-mid-tower.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Mid Tower</a> <!-- ปุ่มเชื่อมไปยังหน้า Mid -->
+                <a href="case-mini-tower.html" class="w3-bar-item w3-button"><i class="fa fa-caret-right w3-margin-right"></i>Mini Tower</a> <!-- ปุ่มเชื่อมไปยังหน้า mini -->
+            </div>
+
+
+        </div>
+        <a href="contact.html" class="w3-bar-item w3-button w3-padding">Contact</a> <!-- กดเพื่อไปช่องทางการ contact -->
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> <!-- ปุ่มเชื่อมไปยังหน้าข่าวสาร -->
+        <a href="https://www.facebook.com/frame3039/?modal=admin_todo_tour" class="w3-bar-item w3-button w3-padding">Subscribe</a> <!-- ปุ่มเชื่อมไปยังหน้าการติดตาม -->
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge"> <!--พื้นหลังเป็นสีดำ -->
+        <div class="w3-bar-item w3-padding-24 w3-wide"><a href="index1.html">JF Shoping IT-Test</a></div> <!-- กดเพื่อเชื่อมต่อไปหน้าhomeได้ -->
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:250px">
+
+        <!-- Push down content on small screens -->
+        <div class="w3-hide-large" style="margin-top:83px"></div>
+
+        <!-- Top header -->
+        <header class="w3-container w3-xlarge"> <!-- ด้านบนตรง header -->
+            <br>
+            <p class="w3-left"><a href="index1.html"><i class="fa fa-home"> Home</i></a></p> <!-- ปุ่มเชื่อมต่อไปหน้า home -->
+            <p class="w3-right"><a href="cart-product.html"><i class="fa fa-shopping-cart w3-right"></i></a></p> <!-- ปุ่มเชื่อมต่อไปยังตะกร้าสินค้า -->
+        </header>
+
+        <br>
+        <br>
+
+        <!-- Image header -->
+        <div class="w3-display-container w3-container w3-frame"> <!-- รูปที่อยู่ header -->
+            <img src="w3images/picture1.jpg" alt="Jeans" style="width:1370px;height: 600px;"> <!--รูปหน้าปกร้าน-->
+            <div class="w3-display-topleft w3-text-white" style="padding:24px 48px"> <!-- ตัวอักษรสีข้าว -->
+                <h1 class="w3-jumbo w3-hide-small">Products Recommend PC</h1> <!-- สินค้าแนะนำ -->
+                <h1 class="w3-hide-large w3-hide-medium">Products Recommend PC</h1> <!-- สินค้าแนะนำ -->
+                <h1 class="w3-hide-small">Products 2020</h1> 
+                <p><a href="#Recommend" class="w3-button w3-black w3-padding-large w3-large">SHOP NOW</a></p> <!-- ไปยังหน้าสินค้า -->
+            </div>
+        </div>
+
+        <div class="w3-container w3-text-grey" id="Recommend">
+        </div>
+
+        <br>
+
+        <!-- Product grid -->
+        <div class="w3-row w3-grayscale "> <!-- พื้นหลังสีเทาๆ -->
+            <br>
+            <div class="w3-col l3 s6">
+                <div class="w3-container w3-black"> <!-- พื้นหลังสีดำ -->
+                    <div class="w3-display-container"> 
+                        <img src="CPU/AMD/AMD_Ryzen_5_3600.png" style="width:250px;height: 200px"> <!-- รูปขนาด250 200 -->
+                        <span class="w3-tag w3-display-topleft">Recommend</span> <!-- ซ้ายบนมีคำว่าแนะนำ -->
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-center w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a> <!-- ดีเทลสินค้าและสามารถกดปุ่มซื้อได้เลย -->
+                        </div>
+                    </div>
+                    <a href="product-detail-amd-3600.html"> <!-- สามารถเชื่อมต่อลิงค์รายละเอียดสินค้าได้ -->
+                        <p>AMD Ryzen 5 3600<br><b class="w3-text-red">6,490 THB</b></p> <!-- ราคาของสินค้า -->
+                    </a>
+                    <br>
+                </div>
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="CPU/Intel/Intel_core_i5_9500f.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-intel-i5-9500.html">
+                        <p>INTEL Core i5-9500F<br><b class="w3-text-red">6,040 THB</b></p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w3-col l3 s6">
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="Mainboard/ATX/MSI MPG Z390 GAMING EDGE AC.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-msi-z390.html">
+                        <p>MSI MPG Z390 GAMING EDGE AC<br><b class="w3-text-red">5,470 THB</b></p>
+                    </a>
+                    <br>
+                </div>
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="Mainboard/Micro-ATX/ASROCK B450M Steel Legend.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-asrock-b450m.html">
+                        <p>ASROCK B450M Steel Legend<br><b class="w3-text-red">2,460 THB</b></p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w3-col l3 s6">
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="Graphic-card/AMD/MSI RX 5500 XT MECH OC.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-msi-rx-5500.html">
+                        <p>MSI RX 5500 XT MECH OC<br><b class="w3-text-red">5,990 THB</b></p>
+                    </a>
+                    <br>
+                </div>
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="Graphic-card/AMD/GIGABYTE RX 590 GAMING.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-gigabyte-rx-590.html">
+                        <p>GIGABYTE RX 590 GAMING<br><b class="w3-text-red">8,790 THB</b></p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w3-col l3 s6">
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="Graphic-card/NVIDIA/ASUS ROG STRIX RTX 2070 SUPER GAMING ADVANCED.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-asus-rtx-2070.html">
+                        <p>ASUS ROG STRIX RTX 2070 SUPER GAMING ADVANCED<br><b class="w3-text-red">18,090 THB</b></p>
+                    </a>
+                </div>
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="Graphic-card/NVIDIA/GIGABYTE GTX 1660 OC.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-gigabyte-gtx-1660-oc.html">
+                        <p>GIGABYTE GTX 1660 OC<br><b class="w3-text-red">7,290 THB</b></p>
+                    </a>
+                </div>
+            </div>
+
+            <br>
+            <div class="w3-col l3 s6">
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="RAM/KINGSTON HyperX FURY RGB DDR4 16GB (8GBx2) 3200.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-hyperx-fury-rgb.html">
+                        <p>KINGSTON HyperX FURY RGB DDR4 16GB (8GBx2) 3200<br><b class="w3-text-red">3,470 THB</b></p>
+                    </a>
+                </div>
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="RAM/TEAMGROUP T-Force Dark Z DDR4 32GB (16GBx2) 3200 Gray.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-t-force-dark-z-3200gray.html">
+                        <p>TEAMGROUP T-Force Dark Z DDR4 32GB (16GBx2) 3200 Gray<br><b class="w3-text-red">5,490 THB</b></p>
+                    </a>
+                </div>
+            </div>
+
+            <br>
+            <div class="w3-col l3 s6">
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="psu/ASUS ROG Thor 850W.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-asus-rog-thor-850w.html">
+                        <p>ASUS ROG Thor 850W<br><b class="w3-text-red">7,490 THB</b></p>
+                    </a>
+                    <br>
+                </div>
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="psu/THERMALTAKE Smart RGB 700W 80 Plus.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-thermaltake-rgb-700w-80p.html">
+                        <p>THERMALTAKE Smart RGB 700W 80 Plus<br><b class="w3-text-red">2,190 THB</b></p>
+                    </a>
+                    <br>
+                </div>
+            </div>
+
+            <br>
+            <div class="w3-col l3 s6">
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="case/Mid-Tower/TSUNAMI Galaxy G7 TG Black.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-tsunami-galaxy-g7-tg-b.html">
+                        <p>TSUNAMI Galaxy G7 TG Black<br><b class="w3-text-red">995 THB</b></p>
+                    </a>
+                    <br>
+                </div>
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="case/Mid-Tower/ITSONAS AURORA Shine RGB.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"></a><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-itsonas-aurora-shine.html">
+                        <p>ITSONAS AURORA Shine RGB<br><b class="w3-text-red">1,220 THB</b></p>
+                    </a>
+                    <br>
+                </div>
+            </div>
+
+            <br>
+            <div class="w3-col l3 s6">
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="case/Mini-Tower/TSUNAMI Coolman Crystal Micro-ATX Gaming (Black-White).png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-tsunami-coolman.html">
+                        <p>TSUNAMI Coolman Crystal Micro-ATX Gaming (Black-White)<br><b class="w3-text-red">955 THB</b></p>
+                </div>
+                <div class="w3-container w3-black">
+                    <div class="w3-display-container">
+                        <img src="case/Mini-Tower/NZXT H200i Black-Red.png" style="width:250px;height: 200px">
+                        <span class="w3-tag w3-display-topleft">Sale</span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="cart-product.html"><button class="w3-button w3-white">Buy now <i class="fa fa-shopping-cart"></i></button></a>
+                        </div>
+                    </div>
+                    <a href="product-detail-nzxt-h200i.html">
+                        <p>NZXT H200i Black-Red<br><b class="w3-text-red">4,590 THB</b></p>
+                    </a>
+                    <br>
+                </div>
+            </div>
+            <br>
+        </div>
+
+
+        <br>
+        <br>
+
+        <!-- Subscribe section -->
+        <div class="w3-container w3-black w3-padding-32">
+            <div class="container">
+                <div class="mySlides">
+                    <div class="numbertext">CPU</div> <!-- สไลด์สินค้าที่แนะนำ -->
+                    <center><img src="CPU/AMD/AMD_Ryzen_5_3600X.png" style="width:500px;height: 350px"></center> <!-- รูปสไลด์สินค้าที่แนะนำ -->
+                </div>
+
+                <div class="mySlides">
+                    <div class="numbertext">Graphic-Card</div>
+                    <center><img src="Graphic-card/NVIDIA/MSI RTX 2080 SUPER GAMING X TRIO.png" style="width:500px;height: 350px"></center>
+                </div>
+
+                <div class="mySlides">
+                    <div class="numbertext">Mainboard</div>
+                    <center><img src="Mainboard/ATX/MSI MPG Z390 GAMING EDGE AC.png" style="width:500px;height: 350px"></center>
+                </div>
+
+                <div class="mySlides">
+                    <div class="numbertext">Ram</div>
+                    <center><img src="RAM/THERMALTAKE TOUGHRAM RGB DDR4 16GB (8GBx2) 3200.png" style="width:500px;height: 350px"></center>
+                </div>
+
+                <div class="mySlides">
+                    <div class="numbertext">Powers Supply</div>
+                    <center><img src="psu/ASUS ROG Thor 850W.png" style="width:500px;height: 350px"></center>
+                </div>
+
+                <div class="mySlides">
+                    <div class="numbertext">Case</div>
+                    <center><img src="case/Mid-Tower/TSUNAMI E-Sport G9 Black.png" style="width:500px;height: 350px"></center>
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+                <div class="caption-container">
+                    <p id="caption"></p>
+                </div>
+
+                <div class="row">
+                    <div class="column">
+                        <img class="demo cursor" src="CPU/AMD/AMD_Ryzen_5_3600X.png" style="width:100%" onclick="currentSlide(1)" alt="AMD_Ryzen_5_3600X"> <!-- รายละเอียดในสไลด์ -->
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="Graphic-card/NVIDIA/MSI RTX 2080 SUPER GAMING X TRIO.png" style="width:100%" onclick="currentSlide(2)" alt="MSI RTX 2080 SUPER GAMING X TRIO">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="Mainboard/ATX/MSI MPG Z390 GAMING EDGE AC.png" style="width:100%" onclick="currentSlide(3)" alt="MSI MPG Z390 GAMING EDGE AC">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="RAM/THERMALTAKE TOUGHRAM RGB DDR4 16GB (8GBx2) 3200.png" style="width:100%" onclick="currentSlide(4)" alt="THERMALTAKE TOUGHRAM RGB DDR4 16GB (8GBx2)">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="psu/ASUS ROG Thor 850W.png" style="width:100%" onclick="currentSlide(5)" alt="ASUS ROG Thor 850W">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="case/Mid-Tower/TSUNAMI E-Sport G9 Black.png" style="width:100%" onclick="currentSlide(6)" alt="TSUNAMI E-SPORT G9 BLACK">
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                var slideIndex = 1;
+                showSlides(slideIndex);
+
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("demo");
+                    var captionText = document.getElementById("caption");
+                    if (n > slides.length) {
+                        slideIndex = 1
+                    }
+                    if (n < 1) {
+                        slideIndex = slides.length
+                    }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+                    captionText.innerHTML = dots[slideIndex - 1].alt;
+                }
+            </script>
+
+        </div>
+
+        <br>
+        <br>
+
+        <!-- Footer -->
+        <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+            <div class="w3-row-padding">
+                <div class="w3-col s4">
+                    <h4>Contact</h4>
+                    <p>Questions? Go ahead.</p>
+                    <form action="/action_page.php" target="_blank">
+                        <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
+                        <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
+                        <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
+                        <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required></p>
+                        <button type="submit" class="w3-button w3-block w3-black">Send</button>
+                    </form>
+                </div>
+
+
+                <div class="w3-col s4 w3-justify w3-right">
+                    <h4>Store</h4>
+                    <p><i class="fa fa-fw fa-map-marker"></i> JF Shoping IT-Test </p>
+                    <p><i class="fa fa-fw fa-phone"></i> 085-07XX84X </p>
+                    <p><i class="fa fa-fw fa-envelope"></i> JF_Shoping_IT-Test@email.com</p>
+
+                    <br>
+
+                    <i class="fab fa-facebook-square fa-2x"></i>
+                    <i class="fab fa-instagram fa-2x"></i>
+                    <i class="fab fa-line fa-2x"></i>
+                    <i class="fab fa-twitter fa-2x"></i>
+                    <i class="fab fa-steam fa-2x"></i>
+                </div>
+            </div>
+        </footer>
+
+        <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+
+        <!-- End page content -->
+    </div>
+
+    <!-- Newsletter Modal -->
+    <div id="newsletter" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+            <div class="w3-container w3-white w3-center">
+                <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
+                <h2 class="w3-wide">NEWSLETTER</h2>
+                <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
+                <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+                <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Accordion 
+        function myAccFunc1() {
+            var x = document.getElementById("demoAcc1");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function myAccFunc2() {
+            var x = document.getElementById("demoAcc2");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function myAccFunc3() {
+            var x = document.getElementById("demoAcc3");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function myAccFunc4() {
+            var x = document.getElementById("demoAcc4");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function myAccFunc5() {
+            var x = document.getElementById("demoAcc5");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function myAccFunc6() {
+            var x = document.getElementById("demoAcc6");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        // Open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
